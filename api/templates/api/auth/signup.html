@@ -1,0 +1,68 @@
+{% extends 'api/auth/base.html' %}
+
+{% block title %}Sign Up - Auction App{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="auth-header text-center">
+        <h2 class="mb-0">🎯 Create Account</h2>
+        <p class="mb-0 mt-2 opacity-75">Join our auction community</p>
+    </div>
+    
+    <div class="p-4">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            
+            {% if form.errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endif %}
+            
+            <div class="mb-3">
+                <label for="id_username" class="form-label fw-semibold">Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_email" class="form-label fw-semibold">Email Address</label>
+                {{ form.email }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_date_of_birth" class="form-label fw-semibold">Date of Birth</label>
+                {{ form.date_of_birth }}
+            </div>
+            
+            <div class="mb-3">
+                <label for="id_password1" class="form-label fw-semibold">Password</label>
+                {{ form.password1 }}
+            </div>
+            
+            <div class="mb-4">
+                <label for="id_password2" class="form-label fw-semibold">Confirm Password</label>
+                {{ form.password2 }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-2">
+                ✨ Create Account
+            </button>
+        </form>
+        
+        <hr class="my-4">
+        
+        <p class="text-center text-muted mb-0">
+            Already have an account? 
+            <a href="{% url 'login' %}" class="text-decoration-none fw-semibold">Sign In</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

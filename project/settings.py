@@ -37,7 +37,12 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    'django-psql-persistent-web-3.apps.a.comp-teach.qmul.ac.uk',
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -146,12 +151,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 INTERNAL_IPS = ['127.0.0.1']
 
-# CSRF trusted origins (needed for Vue dev server)
+# CSRF trusted origins (needed for Vue dev server and OpenShift)
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
+    'https://django-psql-persistent-web-3.apps.a.comp-teach.qmul.ac.uk',
 ]
 
 # Custom User Model

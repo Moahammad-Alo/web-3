@@ -12,7 +12,7 @@ A Single Page Application (SPA) auction platform built with Django 5.2 (backend 
 
 ## Deployed Application
 
-**URL**: [To be added after deployment]
+**URL**: https://django-psql-persistent-web-3.apps.a.comp-teach.qmul.ac.uk
 
 ## Admin Credentials
 
